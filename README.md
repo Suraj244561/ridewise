@@ -22,6 +22,13 @@ Console-based Java app that demonstrates OOP + SOLID with Strategy pattern for:
 1. Open repo in IntelliJ.
 2. Run: `src/main/java/app/Main.java`
 
+## Run (Maven)
+From project root:
+```bash
+mvn -q clean package
+mvn -q exec:java
+```
+
 ## Strategy swap
 In `Main.java`, switch strategies like:
 ```java
