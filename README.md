@@ -18,6 +18,7 @@ Console-based Java app that demonstrates OOP + SOLID with Strategy pattern for:
 - `src/main/java/strategy` — strategy interfaces + implementations
 - `src/main/java/service` — services (RiderService, DriverService, RideService)
 - `src/main/java/app/Main.java` — console menu
+- `src/test/java` — JUnit tests
 
 ## Run (IntelliJ)
 1. Open repo in IntelliJ.
@@ -28,6 +29,11 @@ From project root:
 ```bash
 mvn -q clean package
 mvn -q exec:java
+```
+
+## Run tests (Maven)
+```bash
+mvn -q test
 ```
 
 ## Strategy swap
