@@ -34,8 +34,10 @@ public class Main {
                     case 3 -> viewAvailableDrivers(driverService);
                     case 4 -> requestRide(rideService);
                     case 5 -> completeRide(rideService);
-                    case 6 -> viewRides(rideService);
-                    case 7 -> {
+                    case 6 -> cancelRide(rideService);
+                    case 7 -> updateDriverAvailability(driverService);
+                    case 8 -> viewRides(rideService);
+                    case 9 -> {
                         System.out.println("Bye!");
                         return;
                     }
@@ -56,8 +58,10 @@ public class Main {
         System.out.println("3. View Available Drivers");
         System.out.println("4. Request Ride");
         System.out.println("5. Complete Ride");
-        System.out.println("6. View Rides");
-        System.out.println("7. Exit");
+        System.out.println("6. Cancel Ride");
+        System.out.println("7. Update Driver Availability");
+        System.out.println("8. View Rides");
+        System.out.println("9. Exit");
     }
 
     private static void addRider(RiderService riderService) {
@@ -104,6 +108,20 @@ public class Main {
         System.out.println("Completed. Receipt: " + receipt);
     }
 
+    private static void cancelRide(RideService rideService) {
+        int rideId = readInt("Ride ID to cancel: ");
+        rideService.cancelRide(rideId);
+        System.out.println("Cancelled. Current ride: " + rideService.getRideById(rideId));
+    }
+
+    private static void updateDriverAvailability(DriverService driverService) {
+        int driverId = readInt("Driver ID: ");
+        int val = readInt("Available? (1 = Yes, 0 = No): ");
+        boolean available = (val == 1);
+        driverService.setAvailability(driverId, available);
+        System.out.println("Updated: " + driverService.getDriverById(driverId));
+    }
+
     private static void viewRides(RideService rideService) {
         List<Ride> rides = rideService.getAllRides();
         if (rides.isEmpty()) {
@@ -113,6 +131,7 @@ public class Main {
         rides.forEach(System.out::println);
     }
 
+    // ---------- Input helpers ----------
     private static int readInt(String msg) {
         System.out.print(msg);
         while (!sc.hasNextInt()) {

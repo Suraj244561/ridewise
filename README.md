@@ -11,6 +11,7 @@ Console-based Java app that demonstrates OOP + SOLID with Strategy pattern for:
 - Request ride (REQUESTED → ASSIGNED)
 - Complete ride (COMPLETED) + Fare receipt
 - Cancel ride (CANCELLED)
+- Update driver availability
 
 ## Project structure
 - `src/main/java/model` — domain entities + enums
